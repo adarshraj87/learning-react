@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component,PropTypes} from "react";
 
 import {AppRegistry, StyleSheet, Text, View} from "react-native";
 
@@ -9,22 +9,29 @@ class Language extends Component {
         super();
         this.state = {
             name: "Adarsh",
-            lanuages: ['node', 'php','html','css']
+            lanuages: ['node', 'php', 'html', 'css']
         }
     }
 
     render() {
         const {states} = this.state;
-        let languages = null;
-        languages = this.state.lanuages.map((language, i) => {
-            return (<Text key={i}>{language}</Text>)
-        })
         return (
             <View style={styles.container}>
-                {languages}
+                <ChildComponent/>
             </View>
         )
     }
+}
+
+class ChildComponent extends Component {
+    render() {
+        return (<Text >{this.props.name}</Text>
+        )
+    }
+}
+
+ChildComponent.propTypes = {
+    name: PropTypes.string
 }
 
 
