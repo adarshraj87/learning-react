@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AppRegistry, View,Text,StyleSheet} from "react-native";
+import {AppRegistry, StyleSheet, Text, View} from "react-native";
 
 
 class StateApp extends Component {
@@ -10,15 +10,22 @@ class StateApp extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('component mounteed')
-        this.setState({name:'Raj'})
+    }
+
+    updateName() {
+        console.log('call is coming' + this.state.name);
+        if (this.state.name == "Adarsh")
+            this.setState({name: 'Raj'})
+        else
+            this.setState({name: "Adarsh"})
     }
 
     render() {
         return (
             <View style={style.container}>
-                <Text>Hello {this.state.name}</Text>
+                <Text onPress={() => this.updateName()}>Hello {this.state.name}</Text>
             </View>
         )
     }
@@ -26,10 +33,10 @@ class StateApp extends Component {
 
 
 const style = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'center'
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
 
