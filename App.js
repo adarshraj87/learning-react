@@ -8,26 +8,28 @@ class Language extends Component {
     constructor() {
         super();
         this.state = {
-            name: 'Adarsh'
+            name: "Adarsh",
+            lanuages: ['node', 'php','html','css']
         }
     }
 
     render() {
-        const {name} = this.state;
+        const {states} = this.state;
+        let languages = null;
+        languages = this.state.lanuages.map((language, i) => {
+            return (<Text key={i}>{language}</Text>)
+        })
         return (
             <View style={styles.container}>
-                <DisplayLanguage name={name}/>
+                {languages}
             </View>
         )
     }
 }
 
-export class DisplayLanguage extends Component {
-    render() {
-        return (<Text>{this.props.name}</Text>)
-    }
-}
+
 export default Language;
+
 
 const styles = StyleSheet.create({
     container: {
