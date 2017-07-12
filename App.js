@@ -1,68 +1,39 @@
 import React, {Component} from "react";
-import {AppRegistry, StyleSheet, Text, View} from "react-native";
+import {AppRegistry, View,Text,StyleSheet} from "react-native";
 
-const HeaderTitle = () => (
-    <Text>This is a title</Text>
-)
-const FooterTitle = () => (
-    <Text>This is a footer</Text>
-)
-const Header = () => (
-    <View>
-        <HeaderTitle/>
-    </View>
-)
 
-const Footer = () => (
-    <View>
-        <FooterTitle/>
-    </View>
-)
-
-export default class HelloWorld extends Component {
-
+class StateApp extends Component {
     constructor() {
         super();
         this.state = {
-            'name': 'This is a name for app'
+            name: 'Adarsh'
         }
     }
 
-    componentWillMount() {
-        console.log('loading component');
-    }
-
-    componentDidMount() {
-        console.log('loaded component')
-        this.setState({name: 'Changed'})
+    componentDidMount(){
+        console.log('component mounteed')
+        this.setState({name:'Raj'})
     }
 
     render() {
         return (
-            <View style={frame.outliner}>
-                <Header/>
-                <Footer/>
+            <View style={style.container}>
+                <Text>Hello {this.state.name}</Text>
             </View>
         )
     }
-
 }
 
-const frame = StyleSheet.create({
-    outliner: {
-        flex: 1,
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    displayText: {
-        fontSize: 24
+
+const style = StyleSheet.create({
+    container:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center'
     }
 })
 
-AppRegistry.registerComponent('HelloWorld', () => HelloWorld);
+export default StateApp;
 
 
-
-
-
+AppRegistry.registerComponent('States', () => StateApp);
