@@ -1,46 +1,43 @@
 import React, {Component} from "react";
 import {AppRegistry, StyleSheet, Text, View} from "react-native";
 
+class StateTypes extends Component {
 
-class StateApp extends Component {
+
     constructor() {
         super();
         this.state = {
-            name: 'Adarsh'
+            name: 'Adarsh Raj',
+            langauges: ['PHP', 'Node.js'],
+            Project: {
+                'name': "Learning React"
+            }
         }
-    }
-
-    componentDidMount() {
-        console.log('component mounteed')
-    }
-
-    updateName() {
-        console.log('call is coming' + this.state.name);
-        if (this.state.name == "Adarsh")
-            this.setState({name: 'Raj'})
-        else
-            this.setState({name: "Adarsh"})
     }
 
     render() {
         return (
-            <View style={style.container}>
-                <Text onPress={() => this.updateName()}>Hello {this.state.name}</Text>
+            <View style={styles.container}>
+                <Text>{this.state.name}</Text>
+                <Text>{this.state.langauges.length}</Text>
+                <Text>{this.state.Project.name}</Text>
             </View>
         )
     }
+
 }
 
-
-const style = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
     }
 })
 
-export default StateApp;
 
 
-AppRegistry.registerComponent('States', () => StateApp);
+
+export default StateTypes;
+
+AppRegistry.registerComponent('StateType', () => StateTypes);
