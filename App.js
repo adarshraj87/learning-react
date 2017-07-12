@@ -1,44 +1,39 @@
-import React, {Component,PropTypes} from "react";
+import React, {Component} from "react";
 
 import {AppRegistry, StyleSheet, Text, View} from "react-native";
 
 
-class Language extends Component {
+class Ajax extends Component {
 
     constructor() {
         super();
         this.state = {
-            name: "Adarsh",
-            lanuages: ['node', 'php', 'html', 'css']
+            loading: true,
+            name: null
         }
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({loading: false, name: "Raj"});
+        }, 1000)
+    }
+
     render() {
-        const {states} = this.state;
-        return (
-            <View style={styles.container}>
-                <ChildComponent/>
-            </View>
-        )
+
+        if (this.state.loading) {
+            return (<View style={style.container}><Text>Loading</Text></View>)
+        } else {
+            return (<View style={style.container}><Text>{this.state.name}</Text></View>)
+
+        }
+
     }
 }
 
-class ChildComponent extends Component {
-    render() {
-        return (<Text >{this.props.name}</Text>
-        )
-    }
-}
+export default Ajax;
 
-ChildComponent.propTypes = {
-    name: PropTypes.string
-}
-
-
-export default Language;
-
-
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -46,4 +41,4 @@ const styles = StyleSheet.create({
     }
 })
 
-AppRegistry.registerComponent('Language', () => Language);
+AppRegistry.registerComponent('Ajax', () => Ajax);
